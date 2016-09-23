@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/nfeng/文档/cmake_work/cmake-tutorial-5/TutorialConfig.h
+
+/home/nfeng/文档/cmake_work/cmake-tutorial-5/tutorial.cxx
+stdio.h
+-
+stdlib.h
+-
+math.h
+-
+TutorialConfig.h
+/home/nfeng/文档/cmake_work/cmake-tutorial-5/TutorialConfig.h
+MathFunctions.h
+/home/nfeng/文档/cmake_work/cmake-tutorial-5/MathFunctions.h
+
+MathFunctions/MathFunctions.h
+math.h
+-
+
