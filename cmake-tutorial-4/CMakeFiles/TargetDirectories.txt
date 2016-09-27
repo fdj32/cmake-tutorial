@@ -1,6 +1,0 @@
-/home/nfeng/文档/cmake_work/cmake-tutorial-4/CMakeFiles/edit_cache.dir
-/home/nfeng/文档/cmake_work/cmake-tutorial-4/CMakeFiles/rebuild_cache.dir
-/home/nfeng/文档/cmake_work/cmake-tutorial-4/CMakeFiles/Tutorial.dir
-/home/nfeng/文档/cmake_work/cmake-tutorial-4/MathFunctions/CMakeFiles/edit_cache.dir
-/home/nfeng/文档/cmake_work/cmake-tutorial-4/MathFunctions/CMakeFiles/rebuild_cache.dir
-/home/nfeng/文档/cmake_work/cmake-tutorial-4/MathFunctions/CMakeFiles/MathFunctions.dir

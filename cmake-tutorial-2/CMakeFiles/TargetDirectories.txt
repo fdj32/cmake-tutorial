@@ -1,3 +1,0 @@
-/home/nfeng/文档/cmake_work/cmake-tutorial-2/CMakeFiles/edit_cache.dir
-/home/nfeng/文档/cmake_work/cmake-tutorial-2/CMakeFiles/rebuild_cache.dir
-/home/nfeng/文档/cmake_work/cmake-tutorial-2/CMakeFiles/Tutorial.dir
