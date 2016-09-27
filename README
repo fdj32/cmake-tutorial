@@ -1,1 +1,13 @@
 https://cmake.org/cmake-tutorial/
+
+For using USE_MYMATH, run command "cmake -DUSE_MYMATH ."
+
+nfeng@nfeng-OptiPlex-990:/media/nfeng/d/cmake_work/cmake-tutorial/cmake-tutorial-6$ cmake -i
+The "cmake -i" wizard mode is no longer supported.
+Use the -D option to set cache values on the command line.
+Use cmake-gui or ccmake for an interactive dialog.
+nfeng@nfeng-OptiPlex-990:/media/nfeng/d/cmake_work/cmake-tutorial/cmake-tutorial-6$ cmake-gui
+程序“cmake-gui”尚未安装。 您可以使用以下命令安装：
+sudo apt install cmake-qt-gui
+
+
