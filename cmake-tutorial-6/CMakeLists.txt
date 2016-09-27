@@ -7,10 +7,16 @@ set (Tutorial_VERSION_MAJOR 1)
 set (Tutorial_VERSION_MINOR 0)
 
 # does this system provide the log and exp functions?
-# include (CheckFunctionExists)
+include (CheckFunctionExists)
 #include (${CMAKE_ROOT}/Modules/CheckFunctionExists.cmake)
-#check_function_exists (log HAVE_LOG)
-#check_function_exists (exp HAVE_EXP)
+check_function_exists (log HAVE_LOG)
+check_function_exists (exp HAVE_EXP)
+check_function_exists (pow HAVE_POW)
+check_function_exists (atof HAVE_ATOF)
+
+INCLUDE (CheckIncludeFiles)
+CHECK_INCLUDE_FILES (malloc.h HAVE_MALLOC_H)
+CHECK_INCLUDE_FILES (math.h HAVE_MATH_H)
 
 # configure a header file to pass some of the CMake settings
 # to the source code
