@@ -10,4 +10,6 @@ nfeng@nfeng-OptiPlex-990:/media/nfeng/d/cmake_work/cmake-tutorial/cmake-tutorial
 程序“cmake-gui”尚未安装。 您可以使用以下命令安装：
 sudo apt install cmake-qt-gui
 
+Why methods in <math.h> can't be found? while the method "atof" can be found and file "math.h" can also be found?
+
 

@@ -2,9 +2,15 @@
 # Installing and Testing (Step 3)
 cmake_minimum_required (VERSION 2.6)
 project (Tutorial)
+include(CTest)
+
 # The version number.
 set (Tutorial_VERSION_MAJOR 1)
 set (Tutorial_VERSION_MINOR 0)
+
+# should we use our own math functions?
+option (USE_MYMATH 
+        "Use tutorial provided math implementation" ON) 
  
 # configure a header file to pass some of the CMake settings
 # to the source code
@@ -17,10 +23,6 @@ configure_file (
 # so that we will find TutorialConfig.h
 include_directories("${PROJECT_BINARY_DIR}")
  
-# should we use our own math functions?
-option (USE_MYMATH 
-        "Use tutorial provided math implementation" ON) 
-
 # add the MathFunctions library?
 #
 if (USE_MYMATH)
@@ -40,8 +42,6 @@ install (FILES "${PROJECT_BINARY_DIR}/TutorialConfig.h"
 
 # default install folder is "/usr/local"
 #set (CMAKE_INSTALL_PREFIX "/opt/active")
-
-include(CTest)
 
 # does the application run
 add_test (TutorialRuns Tutorial 25) 
