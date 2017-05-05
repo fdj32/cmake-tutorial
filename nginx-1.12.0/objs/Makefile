@@ -1,6 +1,6 @@
 
 CC =	cc
-CFLAGS =  -pipe  -O -W -Wall -Wpointer-arith -Wno-unused-parameter -Werror -g 
+CFLAGS =  -pipe  -O -Wall -Wextra -Wpointer-arith -Wconditional-uninitialized -Wno-unused-parameter -Wno-deprecated-declarations -Werror -g 
 CPP =	cc -E
 LINK =	$(CC)
 
@@ -71,9 +71,8 @@ CORE_DEPS = src/core/nginx.h \
 	src/os/unix/ngx_user.h \
 	src/os/unix/ngx_dlopen.h \
 	src/os/unix/ngx_process_cycle.h \
-	src/os/unix/ngx_linux_config.h \
-	src/os/unix/ngx_linux.h \
-	src/core/ngx_regex.h \
+	src/os/unix/ngx_darwin_config.h \
+	src/os/unix/ngx_darwin.h \
 	objs/ngx_auto_config.h
 
 
@@ -167,10 +166,9 @@ objs/nginx:	objs/src/core/nginx.o \
 	objs/src/os/unix/ngx_user.o \
 	objs/src/os/unix/ngx_dlopen.o \
 	objs/src/os/unix/ngx_process_cycle.o \
-	objs/src/os/unix/ngx_linux_init.o \
-	objs/src/event/modules/ngx_epoll_module.o \
-	objs/src/os/unix/ngx_linux_sendfile_chain.o \
-	objs/src/core/ngx_regex.o \
+	objs/src/os/unix/ngx_darwin_init.o \
+	objs/src/event/modules/ngx_kqueue_module.o \
+	objs/src/os/unix/ngx_darwin_sendfile_chain.o \
 	objs/src/http/ngx_http.o \
 	objs/src/http/ngx_http_core_module.o \
 	objs/src/http/ngx_http_special_response.o \
@@ -206,7 +204,6 @@ objs/nginx:	objs/src/core/nginx.o \
 	objs/src/http/modules/ngx_http_map_module.o \
 	objs/src/http/modules/ngx_http_split_clients_module.o \
 	objs/src/http/modules/ngx_http_referer_module.o \
-	objs/src/http/modules/ngx_http_rewrite_module.o \
 	objs/src/http/modules/ngx_http_proxy_module.o \
 	objs/src/http/modules/ngx_http_fastcgi_module.o \
 	objs/src/http/modules/ngx_http_uwsgi_module.o \
@@ -285,10 +282,9 @@ objs/nginx:	objs/src/core/nginx.o \
 	objs/src/os/unix/ngx_user.o \
 	objs/src/os/unix/ngx_dlopen.o \
 	objs/src/os/unix/ngx_process_cycle.o \
-	objs/src/os/unix/ngx_linux_init.o \
-	objs/src/event/modules/ngx_epoll_module.o \
-	objs/src/os/unix/ngx_linux_sendfile_chain.o \
-	objs/src/core/ngx_regex.o \
+	objs/src/os/unix/ngx_darwin_init.o \
+	objs/src/event/modules/ngx_kqueue_module.o \
+	objs/src/os/unix/ngx_darwin_sendfile_chain.o \
 	objs/src/http/ngx_http.o \
 	objs/src/http/ngx_http_core_module.o \
 	objs/src/http/ngx_http_special_response.o \
@@ -324,7 +320,6 @@ objs/nginx:	objs/src/core/nginx.o \
 	objs/src/http/modules/ngx_http_map_module.o \
 	objs/src/http/modules/ngx_http_split_clients_module.o \
 	objs/src/http/modules/ngx_http_referer_module.o \
-	objs/src/http/modules/ngx_http_rewrite_module.o \
 	objs/src/http/modules/ngx_http_proxy_module.o \
 	objs/src/http/modules/ngx_http_fastcgi_module.o \
 	objs/src/http/modules/ngx_http_uwsgi_module.o \
@@ -338,8 +333,7 @@ objs/nginx:	objs/src/core/nginx.o \
 	objs/src/http/modules/ngx_http_upstream_keepalive_module.o \
 	objs/src/http/modules/ngx_http_upstream_zone_module.o \
 	objs/ngx_modules.o \
-	-ldl -lpthread -lcrypt -lpcre -lz \
-	-Wl,-E
+	-lz
 	
 
 
@@ -793,32 +787,25 @@ objs/src/os/unix/ngx_process_cycle.o:	$(CORE_DEPS) \
 		src/os/unix/ngx_process_cycle.c
 
 
-objs/src/os/unix/ngx_linux_init.o:	$(CORE_DEPS) \
-	src/os/unix/ngx_linux_init.c
+objs/src/os/unix/ngx_darwin_init.o:	$(CORE_DEPS) \
+	src/os/unix/ngx_darwin_init.c
 	$(CC) -c $(CFLAGS) $(CORE_INCS) \
-		-o objs/src/os/unix/ngx_linux_init.o \
-		src/os/unix/ngx_linux_init.c
+		-o objs/src/os/unix/ngx_darwin_init.o \
+		src/os/unix/ngx_darwin_init.c
 
 
-objs/src/event/modules/ngx_epoll_module.o:	$(CORE_DEPS) \
-	src/event/modules/ngx_epoll_module.c
+objs/src/event/modules/ngx_kqueue_module.o:	$(CORE_DEPS) \
+	src/event/modules/ngx_kqueue_module.c
 	$(CC) -c $(CFLAGS) $(CORE_INCS) \
-		-o objs/src/event/modules/ngx_epoll_module.o \
-		src/event/modules/ngx_epoll_module.c
+		-o objs/src/event/modules/ngx_kqueue_module.o \
+		src/event/modules/ngx_kqueue_module.c
 
 
-objs/src/os/unix/ngx_linux_sendfile_chain.o:	$(CORE_DEPS) \
-	src/os/unix/ngx_linux_sendfile_chain.c
+objs/src/os/unix/ngx_darwin_sendfile_chain.o:	$(CORE_DEPS) \
+	src/os/unix/ngx_darwin_sendfile_chain.c
 	$(CC) -c $(CFLAGS) $(CORE_INCS) \
-		-o objs/src/os/unix/ngx_linux_sendfile_chain.o \
-		src/os/unix/ngx_linux_sendfile_chain.c
-
-
-objs/src/core/ngx_regex.o:	$(CORE_DEPS) \
-	src/core/ngx_regex.c
-	$(CC) -c $(CFLAGS) $(CORE_INCS) \
-		-o objs/src/core/ngx_regex.o \
-		src/core/ngx_regex.c
+		-o objs/src/os/unix/ngx_darwin_sendfile_chain.o \
+		src/os/unix/ngx_darwin_sendfile_chain.c
 
 
 objs/src/http/ngx_http.o:	$(CORE_DEPS) $(HTTP_DEPS) \
@@ -1064,13 +1051,6 @@ objs/src/http/modules/ngx_http_referer_module.o:	$(CORE_DEPS) $(HTTP_DEPS) \
 	$(CC) -c $(CFLAGS) $(CORE_INCS) $(HTTP_INCS) \
 		-o objs/src/http/modules/ngx_http_referer_module.o \
 		src/http/modules/ngx_http_referer_module.c
-
-
-objs/src/http/modules/ngx_http_rewrite_module.o:	$(CORE_DEPS) $(HTTP_DEPS) \
-	src/http/modules/ngx_http_rewrite_module.c
-	$(CC) -c $(CFLAGS) $(CORE_INCS) $(HTTP_INCS) \
-		-o objs/src/http/modules/ngx_http_rewrite_module.o \
-		src/http/modules/ngx_http_rewrite_module.c
 
 
 objs/src/http/modules/ngx_http_proxy_module.o:	$(CORE_DEPS) $(HTTP_DEPS) \
